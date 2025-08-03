@@ -171,7 +171,7 @@ format = "json"  # Structured logging
 
 ### High-Level Milestone Preview
 
-- [ ] **Single LLM Interface** - Basic CLI with one model responding
+- [ ] **Single LLM Interface** - Basic CLI with one model responding (currently here)
 - [ ] **Multi-Model Conversations** - Enable back-and-forth between multiple models
 - [ ] **Recursive Summarization Engine** - Add intelligent compression for context management
 - [ ] **Configuration & Output System** - TOML-based configuration and structured outputs
@@ -198,15 +198,15 @@ format = "json"  # Structured logging
 - Establish testing patterns and CI/CD pipeline
 
 **Key Features:**
-- [x] Project initialization with poetry/setuptools
-- [x] Implement basic CLI using Typer with rich help text
-- [x] Build abstract `LLMBackend` interface with async support
-- [x] Create OpenAI backend with full API coverage
-- [x] Add comprehensive error handling with retry logic
-- [x] Implement environment-based configuration
-- [x] Create logging infrastructure with structured output
-- [x] Add basic unit and integration tests
-- [x] Set up GitHub Actions for CI/CD
+- [ ] Project initialization with poetry/setuptools
+- [ ] Implement basic CLI using Typer with rich help text
+- [ ] Build abstract `LLMBackend` interface with async support
+- [ ] Create OpenAI backend with full API coverage
+- [ ] Add comprehensive error handling with retry logic
+- [ ] Implement environment-based configuration
+- [ ] Create logging infrastructure with structured output
+- [ ] Add basic unit and integration tests
+- [ ] Set up GitHub Actions for CI/CD
 
 **Deliverable**: `debate "Hello AI" --agent gpt4` returns a single formatted response
 
