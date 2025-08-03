@@ -10,11 +10,13 @@ def ask_ai(client, model, texts):
     print(response.text)
     print("\n")
 
+    return response.text
+
 
 def start_conversation():
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
     chosen_model = "gemini-2.5-flash"
-    allTexts = ""
+    allTexts = []
 
     while True:
         users_text = input("You: ").strip()
@@ -22,9 +24,15 @@ def start_conversation():
         if users_text.lower() in ["exit", "quit", "stop", "bye", "cya"]:
             break
 
-        allTexts += "User: " + users_text
+        users_text = "User: " + users_text
 
-        ask_ai(client, chosen_model, allTexts)
+        allTexts.append(users_text)
+
+        response = ask_ai(client, chosen_model, allTexts)
+
+        ai_text = "Gemini: " + (response or "[No response]")
+
+        allTexts.append(ai_text)
 
 
 def main():
