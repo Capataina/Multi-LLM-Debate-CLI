@@ -3,10 +3,31 @@ from dotenv import load_dotenv
 from google import genai
 
 
-def main():
-    # Load environment variables from .env file
-    load_dotenv()
+def ask_ai(client, model, texts):
+    response = client.models.generate_content(model=model, contents=texts)
 
+    print("\n")
+    print(response.text)
+    print("\n")
+
+
+def start_conversation():
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    chosen_model = "gemini-2.5-flash"
+    allTexts = ""
+
+    while True:
+        users_text = input("You: ").strip()
+
+        if users_text.lower() in ["exit", "quit", "stop", "bye", "cya"]:
+            break
+
+        allTexts += "User: " + users_text
+
+        ask_ai(client, chosen_model, allTexts)
+
+
+def main():
     # Create the Gemini client
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
@@ -20,5 +41,24 @@ def main():
     print(response.text)
 
 
+def test_multi_line():
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    chat = client.chats.create(model="gemini-2.5-flash")
+
+    response = chat.send_message("I have 2 dogs in my house.")
+    print(response.text)
+
+    response = chat.send_message("How many paws are in my house?")
+    print(response.text)
+
+    for message in chat.get_history():
+        print(f"role - {message.role}", end=": ")
+        if message.parts is not None and len(message.parts) > 0:
+            print(message.parts[0].text)
+        else:
+            print("[No content]")
+
+
 if __name__ == "__main__":
-    main()
+    load_dotenv()
+    start_conversation()
