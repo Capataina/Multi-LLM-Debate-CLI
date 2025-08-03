@@ -184,6 +184,8 @@ format = "json"  # Structured logging
 - [ ] **Multi-Modal Debates** - Support for image and code discussions
 - [ ] **Distributed Debates** - Network multiple instances for large-scale debates
 
+---
+
 ### Detailed Milestone Descriptions
 
 #### ✅ Milestone 1: Single LLM Interface
