@@ -1,0 +1,15 @@
+[project]
+name = "multi-llm-debate-cli"
+version = "0.1.0"
+description = "A Python framework for orchestrating AI debates — multiple language models engage in structured dialogue, with their insights compressed into a rolling summary to surface emergent consensus and divergent perspectives."
+authors = [{ name = "Capataina", email = "ata02caner@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.poetry]
+packages = [{ include = "multi_llm_debate", from = "src" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
