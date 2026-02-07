@@ -46,6 +46,81 @@ Outputs aren't just text files — they're structured documents ready for analys
 
 ---
 
+## 🔁 Iterative Debate & Critique Loop
+
+Beyond simple multi-round discussion, the framework supports an **iterative convergence loop** that explicitly models agreement, disagreement, and argumentative pressure between agents. Rather than free-form back-and-forth, debates progress through structured phases that surface conflicts, force targeted critique, and track how positions evolve over time.
+
+### Debate Phases
+
+Each debate iteration consists of the following deterministic phases:
+
+#### 1. Independent Positioning
+All participating agents receive the same debate prompt and the current rolling summary. Agents respond **independently and concurrently**, producing their own analysis and conclusions without visibility into other agents’ raw outputs.
+
+This preserves epistemic independence and prevents early anchoring effects.
+
+#### 2. Aggregation & Alignment Analysis
+A dedicated aggregator agent ingests all agent responses and produces a structured synthesis that includes:
+
+- **Shared Conclusions**: Claims or observations agreed upon by all agents
+- **Majority Positions**: Points supported by a subset of agents
+- **Divergent Claims**: Explicit disagreements or incompatible assertions
+- **Unique Contributions**: Novel arguments raised by a single agent
+- **Unaddressed Dimensions**: Relevant aspects of the topic not discussed by any agent
+
+This synthesis forms the **canonical debate state** for the next phase and replaces raw transcripts as the primary context.
+
+#### 3. Directed Critique & Defense
+The aggregated synthesis is redistributed to all agents. Each agent is instructed to:
+
+- Critically evaluate points of disagreement
+- Defend their original positions where challenged
+- Concede or revise claims where persuaded by counterarguments
+- Introduce clarifications or missing considerations surfaced by others
+
+Importantly, agents do **not** address each other directly. All interaction is mediated through the structured synthesis, preserving statelessness and preventing role confusion.
+
+#### 4. Iterative Refinement
+Steps (2) and (3) repeat for a configurable number of iterations or until termination criteria are met. Across iterations, the framework tracks:
+
+- Emergence of new arguments
+- Convergence toward consensus
+- Persistence of irreconcilable disagreements
+- Explicit stance revisions or confidence downgrades
+- Reduction in argumentative novelty (stagnation)
+
+This loop transforms debate from a linear conversation into a **pressure-tested convergence process**.
+
+#### 5. Termination & Final Synthesis
+The debate concludes when one or more stopping conditions are satisfied:
+
+- Consensus exceeds a configured convergence threshold
+- No novel arguments are introduced for N iterations
+- Maximum iteration count is reached
+- External constraints (time, cost, token budget) are exceeded
+
+A final synthesis agent then produces a comprehensive debate artifact capturing:
+
+- Final consensus positions
+- Remaining disagreements and strongest arguments on each side
+- Chronological evolution of the debate
+- Notable concessions and stance changes
+- Attribution of key insights to originating agents
+
+### Why This Matters
+
+This iterative loop enables capabilities that traditional chat-based systems cannot provide:
+
+- **Explicit disagreement modeling** instead of implicit averaging
+- **Traceable belief evolution** across debate rounds
+- **Resistance to single-model blind spots**
+- **Reproducible convergence dynamics** suitable for research and analysis
+
+Rather than asking “what is the answer?”, the system answers:
+> *How did multiple intelligent systems reason their way toward (or away from) agreement?*
+
+---
+
 ## 🏗️ Core Design Principles
 
 ### 1. Modularity Through Abstraction
